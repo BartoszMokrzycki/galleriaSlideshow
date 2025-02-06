@@ -2,8 +2,8 @@
 const fullsBtn = document.querySelectorAll('.full-s-btn');
 const popup = document.querySelector('.popup');
 const popupImg = document.querySelector('.popup--img-src');
-const closePopup = document.querySelector('.close-btn');
-const modalImg = document.querySelector('.modalImg')
+const closePopupBtn = document.querySelector('.close-btn');
+const modalImg = document.querySelector('.modalImg');
 
 //slideshow variables
 const allSlideshowItems = document.querySelectorAll('.slideshow__item');
@@ -107,21 +107,47 @@ if (window.location.pathname.includes('slideshow.html')) {
 		updateProgress();
 	};
 
+	//setting autoplay for 15s per slide
+	let autoplayInterval;
+
+	const startAutoplay = () => {
+		autoplayInterval = setInterval(() => {
+			currentIndex = (currentIndex + 1) % totalItems;
+			showSlide(currentIndex);
+		}, 15000);
+	};
+
+	const stopAutoplay = () => {
+		clearInterval(autoplayInterval);
+	};
+
+	startAutoplay();
+
 	//setting slide in main page
 	if (slideIndex !== null) {
 		currentIndex = parseInt(slideIndex);
 		showSlide(currentIndex);
 	}
 
-	//changing slide by btns
-	previousBtn.addEventListener('click', () => {
+	//changing slide by btns or keys
+	const previousSlide = () => {
 		currentIndex = (currentIndex - 1 + totalItems) % totalItems;
 		showSlide(currentIndex);
-	});
+	};
 
-	nextBtn.addEventListener('click', () => {
+	const nextSlide = () => {
 		currentIndex = (currentIndex + 1) % totalItems;
 		showSlide(currentIndex);
+	};
+
+	previousBtn.addEventListener('click', previousSlide);
+	nextBtn.addEventListener('click', nextSlide);
+	document.addEventListener('keydown', e => {
+		if (e.key === 'ArrowLeft') {
+			previousSlide();
+		} else if (e.key === 'ArrowRight') {
+			nextSlide();
+		}
 	});
 
 	showSlide(currentIndex);
@@ -131,7 +157,7 @@ if (window.location.pathname.includes('slideshow.html')) {
 		btn.addEventListener('click', e => {
 			const imgSrc = e.target.previousElementSibling.getAttribute('src');
 			console.log(e.target);
-			modalImg.setAttribute('src', `${imgSrc}`)
+			modalImg.setAttribute('src', `${imgSrc}`);
 			popup.classList.remove('hidden');
 			document.body.style.overflow = 'hidden';
 
@@ -146,11 +172,18 @@ if (window.location.pathname.includes('slideshow.html')) {
 		});
 	});
 
-	closePopup.addEventListener('click', () => {
+	//closing popup by btn or keydown
+	const closePopup = () => {
 		popup.style.opacity = '0';
 		setTimeout(() => {
 			popup.classList.add('hidden');
 		}, 100);
 		document.body.style.overflow = 'auto';
+	};
+	closePopupBtn.addEventListener('click', closePopup);
+	document.addEventListener('keydown', e => {
+		if (e.key === 'Escape') {
+			closePopup();
+		}
 	});
 }
