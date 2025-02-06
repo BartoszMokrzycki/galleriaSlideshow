@@ -1,0 +1,60 @@
+@media (min-width: 576px) {
+	.portrait-box {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 35px;
+		grid-auto-rows: 50px;
+
+		&__item {
+			margin-bottom: 0;
+
+			&.one,
+			&.three,
+			&.six,
+			&.eight,
+			&.ten,
+			&.twelve {
+				grid-row: span 3;
+			}
+
+			&.five,
+			&.eleven,
+			&.two,
+			&.thirteen,
+			&.fiveteen {
+				grid-row: span 4;
+			}
+
+			&.seven,
+			&.four {
+				grid-row: span 5;
+			}
+
+			&.nine,
+			&.fourteen {
+				grid-row: span 6;
+			}
+		}
+
+		.painting__data {
+			bottom: 15px;
+			left: 15px;
+
+			&--name {
+				font-size: 2rem;
+			}
+		}
+	}
+
+	.popup {
+		&--img {
+			&-src {
+				max-height: 70%;
+
+				.modalImg {
+					width: 100%;
+					max-height: 100%;
+				}
+			}
+		}
+	}
+}

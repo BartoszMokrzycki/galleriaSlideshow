@@ -1,0 +1,67 @@
+@media (min-width: 768px) {
+	nav {
+		.title {
+			font-size: 3.2rem;
+		}
+	}
+	main {
+		padding: 4em;
+	}
+
+	.topPanel {
+		display: flex;
+		margin-bottom: 180px;
+
+		.details__img {
+			img {
+				height: 550px;
+			}
+		}
+
+		.details__data {
+			width: 35%;
+			transform: translateY(0);
+			position: relative;
+
+			div {
+				position: absolute;
+				width: 400px;
+				right: 0;
+				background-color: white;
+				padding: 2em 4em;
+				top: 0;
+			}
+
+			&--name {
+				font-size: 5.6rem;
+			}
+
+			img {
+				top: 250px;
+				position: absolute;
+				height: 128px;
+				width: 128px;
+			}
+		}
+	}
+	.details__text {
+		margin-top: 0;
+		position: relative;
+
+		.year {
+			position: absolute;
+			z-index: -1;
+			font-size: 20rem;
+			top: -130px;
+		}
+
+		.description
+		 {
+			padding: 0 6em;
+		}
+
+		.source {
+			margin: 0em 7em;
+		}
+	}
+}
