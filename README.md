@@ -4,7 +4,7 @@
 
 The project represents an **art gallery** in the form of an interactive slideshow. Users can browse through images in fullscreen mode and navigate through various artworks depending on their device screen size. The project utilizes **HTML**, **CSS**, **SCSS**, and **JavaScript**.
 
-## Features Implemented According to the Brief
+## Features Implemented 
 
 // **Navigation through the slideshow**
 - Users can navigate between images using the **"previous"** and **"next"** buttons.
